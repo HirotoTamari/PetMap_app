@@ -1,0 +1,44 @@
+<div class="main_posts">
+    <!-- サイドメニュー -->
+    <div class="maps_menu">
+        <h2 class="menu_title">メニュー</h2>
+        <li>
+            <%= link_to image_tag("/icon/mypage.png"), "/users/index" %>
+            <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+        </li>
+        <li>
+            <img src="/icon/mypage.png" class="logout_img">
+            <%= link_to("ログアウト", "/logout", {method: :post})%>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps" %>
+            <%= link_to( "ペットマップ", "/maps") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps/about" %>
+            <%= link_to( "ペットマップとは", "/maps/about") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/suggestion.png"), "/posts/index" %>
+            <%= link_to( "提案,意見する", "/posts/index") %>
+        </li>
+    </div>
+    <div class="main_posts-show">
+        <h1 class="posts_title">提案, 意見内容</h1>
+        <p class="posts_contents">あなたの提案, 意見の編集, 削除ができます<p>
+        <div class="post_container">
+            <div class="posts_show_item">
+                <p>
+                    <%= @post.content%>         <!-- 提案内容 -->
+                </p>
+                <div class="post_time">
+                    <%= @post.created_at%>      <!-- 作成日時 -->
+                </div>
+                <div class="post_menus">
+                    <%= link_to("編集", "/posts/#{@post.id}/edit") %>                           <!-- 編集　-->
+                    <%= link_to("削除", "/posts/#{@post.id}/destroy", {method: "post"}) %>      <!-- 削除　-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="main_posts">
+    <!-- サイドメニュー -->
+    <div class="maps_menu">
+        <h2 class="menu_title">メニュー</h2>
+        <li>
+            <%= link_to image_tag("/icon/mypage.png"), "/users/index" %>
+            <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+        </li>
+        <li>
+            <img src="/icon/mypage.png" class="logout_img">
+            <%= link_to("ログアウト", "/logout", {method: :post})%>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps" %>
+            <%= link_to( "ペットマップ", "/maps") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps/about" %>
+            <%= link_to( "ペットマップとは", "/maps/about") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/suggestion.png"), "/posts/index" %>
+            <%= link_to( "提案,意見する", "/posts/index") %>
+        </li>
+    </div>
+    <div class="main_posts_edit">
+        <h1 class="posts_title">編集する</h1>
+        <p class="posts_contents">あなたの提案, 意見を編集できます<p>
+        <div class="post_container">
+            <div class="posts_edit_item">
+                <%= form_tag("/posts/#{@post.id}/update") do %>
+                    <div class="form">
+                        <div class="form_body">
+                            <% @post.errors.full_messages.each do |message| %>
+                                <div class="form_error">
+                                <%= message %>
+                                </div>
+                            <% end %>
+                            <textarea class="posts_edit_content" name="content"><%= @post.content%></textarea>
+                            
+                            <input class ="input_button" type="submit" value="保存">
+                        </div>
+                    </div>
+                <%end%>
+            </div>
+        </div>
+    </div>
+</div>

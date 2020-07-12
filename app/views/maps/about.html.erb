@@ -1,0 +1,46 @@
+<!-- ハンバーガーメニュー -->
+<input id="hamburger_menu" type="checkbox" />
+<label for="hamburger_menu" class="open"><img class="about_hamburger_icon" src="/icon/hamburger_icon.png"></label>
+
+<!-- ハンバーガーメニューの中身 -->
+<aside class="about_aside">
+    <label for="hamburger_menu" class="close"><img class="about_hamburger_icon_close" src="/icon/hamburger_close_icon.png"></label>
+
+    <nav class="hamburger_menu">
+        <% if @current_user %>
+            <li>
+                <%= link_to image_tag("/icon/mypage.png"), "/users/index" %>
+                <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+            </li>
+            <li>
+                <%= link_to image_tag("/icon/mypage.png"), "/maps/about"%>
+                <%= link_to("ログアウト", "/logout", {method: :post})%>
+            </li>
+            <li>
+                <%= link_to image_tag("/icon/map.png"), "/maps" %>
+                <%= link_to( "ペットマップ", "/maps") %>
+            </li>
+            <li>
+                <%= link_to image_tag("/icon/suggestion.png"), "/posts/index" %>
+                <%= link_to( "提案,意見する", "/posts/index") %>
+            </li>
+        <% else %>
+            <li>
+                <%= link_to image_tag("/icon/mypage.png"), "/login" %>
+                <%= link_to( "ログイン", "/login") %>
+            </li>
+            <li>
+                <%= link_to image_tag("/icon/map.png"), "/maps" %>
+                <%= link_to( "ペットマップ", "/maps") %>
+            </li>
+        <% end %>
+    </nav>
+</aside>
+
+<h1 class="about_title">ペットマップとは</h1>
+
+<div class="about_menu">
+    <img src="/about_background001.png">
+    <div class="about_contents">
+    </div>
+</div>

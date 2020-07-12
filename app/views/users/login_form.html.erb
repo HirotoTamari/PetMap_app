@@ -1,0 +1,46 @@
+<div class="main_users">
+    <!-- サイドメニュー -->
+    <div class="maps_menu">
+        <h2 class="menu_title">メニュー</h2>
+        <li>
+            <%= link_to image_tag("/icon/mypage.png"), "/login" %>
+            <%= link_to( "ログイン", "/login") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps" %>
+            <%= link_to( "ペットマップ", "/maps") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps/about" %>
+            <%= link_to( "ペットマップとは", "/maps/about") %>
+        </li>
+    </div>
+    <div class="main_users_new">
+        <h1 class="users_title">ログイン</h1>
+        <p class="users_contents">ログインしましょう<p>
+        <div class="users_login_item">
+            <div class="container">
+                <div class="form_users_form">
+                    <div class="form_body">
+                        <% if @error_message %>
+                        <div class="form_error">
+                            <%= @error_message %>
+                        </div>
+                        <% end %>
+                        <%= form_tag("/login") do %>
+                        <p class="input_title">メールアドレス</p>
+                        <input name="email" value="<%= @email %>" class="textbox">
+                        <p class="input_title">パスワード</p>
+                        <input type="password" name="password" value="<%= @password %>" class="textbox">
+                        <input type="submit" value="ログイン" class="textbutton">
+                        <% end %>
+                        <div class="signup_form">
+                            <p class="input_title">アカウントをお持ちでない方は</p>
+                            <%= link_to( "こちら", "/signup" ) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

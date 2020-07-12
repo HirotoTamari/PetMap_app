@@ -1,0 +1,213 @@
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+</head>
+<body>
+    <div class="serch_box">
+        <!-- ハンバーガーメニュー -->
+        <input id="hamburger_menu" type="checkbox" />
+        <label for="hamburger_menu" class="open"><img class="hamburger_icon" src="/icon/hamburger_icon.png"></label>
+
+        <!-- ハンバーガーメニューの中身 -->
+        <aside>
+            <label for="hamburger_menu" class="close"><img class="hamburger_icon" src="/icon/hamburger_close_icon.png"></label>
+
+            <nav class="hamburger_menu">
+                <% if @current_user %>
+                    <li>
+                        <%= link_to image_tag("/icon/mypage.png"), "/users/index" %>
+                        <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+                    </li>
+                    <li>
+                        <%= link_to image_tag("/icon/mypage.png"), "/logout" %>
+                        <%= link_to("ログアウト", "/logout", {method: :post})%>
+                    </li>
+                    <li>
+                        <%= link_to image_tag("/icon/map.png"), "/maps/about" %>
+                        <%= link_to( "ペットマップとは", "/maps/about") %>
+                    </li>
+                    <li>
+                        <%= link_to image_tag("/icon/suggestion.png"), "/posts/index" %>
+                        <%= link_to( "提案,意見する", "/posts/index") %>
+                    </li>
+                <% else %>
+                    <li>
+                        <%= link_to image_tag("/icon/mypage.png"), "/login" %>
+                        <%= link_to( "ログイン", "/login") %>
+                    </li>
+                    <li>
+                        <%= link_to image_tag("/icon/map.png"), "/maps/about" %>
+                        <%= link_to( "ペットマップとは", "/maps/about") %>
+                    </li>
+                <% end %>
+            </nav>
+        </aside>
+
+        <!-- テキストボックス -->
+        <input id="address" type="textbox"　value="" placeholder="ここで検索してください">
+
+        <!-- buttonをクリックしたらSearchGoを実行 -->
+        <input id="address_button" type="image"  src="/icon/serch_icon.png" onclick="SearchGo()">
+    </div>
+
+    <div class="search">
+        <div class="search_menu">
+            <li>
+                    <input id="restaurant_button" type="image"  src="/icon/restaurant.png" onclick="Search('restaurant')">
+            </li>
+            <li class="search_menu_text">飲食店</li>
+        </div>
+        <div class="search_menu">
+            <li>
+                    <input id="restaurant_button" type="image"  src="/icon/hospital.png" onclick="Search('hospital')">
+            </li>
+            <li class="search_menu_text">病院</li>
+        </div>
+    </div>
+
+    <div class="gnavi">
+        <a href="https://api.gnavi.co.jp/api/scope/" target="_blank">
+        <img class="gnavi_img" src="https://api.gnavi.co.jp/api/img/credit/api_265_65.gif" width="265" height="65" border="0" alt="グルメ情報検索サイト　ぐるなび">
+        </a>
+    </div>
+
+    <div id="map" class="map">
+    </div>
+
+
+    <script>
+
+    let map;
+    let geocoder;
+    let places;
+    let marker;
+
+    //地図の生成
+    function initMap(){
+        var initPos = new google.maps.LatLng(35.729756, 139.711069);
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: initPos,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var request = {
+            radius: 1000,      // 表示する半径領域を設定(1 = 1M)
+            location: initPos,
+            types: ['school']
+        };
+        var service = new google.maps.places.PlacesService(map);
+        service.search(request, Result_Places);
+
+    }
+
+    function Search(name) {
+        var initPos = new google.maps.LatLng(35.729756, 139.711069);
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: initPos,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var request = {
+            radius: 1000,      // 表示する半径領域を設定(1 = 1M)
+            location: initPos,
+            types: [name]
+        };
+        var service = new google.maps.places.PlacesService(map);
+        service.search(request, Result_Places);
+    }
+
+    //現在地の取得
+    let pl = navigator.geolocation.getCurrentPosition(get_position);
+        function get_position(position) {
+            let lat = position.coords.latitude;　// 緯度
+            let lng = position.coords.longitude; // 経度
+            let latLng = new google.maps.LatLng(lat, lng);
+            var marker = new google.maps.Marker({　// 現在地の位置設定
+                position: latLng,
+                map: map
+            });
+            // map.setCenter(latLng);　// 地図の中央に現在地を表示する
+            // request.setLocation(latLng);
+        }
+
+        function Result_Places(results, status){
+            // Placesが検家に成功したかとマうかをチェック
+            if(status == google.maps.places.PlacesServiceStatus.OK) {
+                for (var i = 0; i < results.length; i++) {
+                    // 検索結果の数だけ反復処理を変数placeに格納
+                    var place = results[i];
+                    createMarker({
+                        text : place.name,
+                        position : place.geometry.location
+                    });
+                }
+            }
+        }
+        
+        // 入力キーワードと表示範囲を設定
+        function SearchGo() {
+            var latLng = new google.maps.LatLng(0,0);
+            var mapOptions = {
+                center : latLng,
+                zoom: 5,
+                mapTypeId : google.maps.MapTypeId.ROADMAP
+            };
+            // #map_canva要素にMapクラスの新しいインスタンスを作成
+            map = new google.maps.Map(document.getElementById("map"), mapOptions);
+            service = new google.maps.places.PlacesService(map);
+            // input要素に入力されたキーワードを検索の条件に設定
+            var myword = document.getElementById("address");
+            var request = {
+                query : myword.value,
+                radius : 1000,
+                location : map.getCenter()
+            };
+            service.textSearch(request, result_search);
+        }
+        
+        // 検索の結果を受け取る
+        function result_search(results, status) {
+            var bounds = new google.maps.LatLngBounds();
+            for(var i = 0; i < results.length; i++){
+                createMarker({
+                    position : results[i].geometry.location,
+                    text : results[i].name,
+                    map : map
+                });
+                bounds.extend(results[i].geometry.location);
+            }
+            map.fitBounds(bounds);
+        }
+        
+        // 該当する位置にマーカーを表示
+        function createMarker(options) {
+            // マップ情報を保持しているmapオブジェクトを指定
+            options.map = map;
+            // Markcrクラスのオブジェクトmarkerを作成
+            var marker = new google.maps.Marker(options);
+            // 各施設の吹き出し(情報ウインドウ)に表示させる処理
+            var infoWnd = new google.maps.InfoWindow();
+            infoWnd.setContent(options.text);
+            // addListenerメソッドを使ってイベントリスナーを登録
+            google.maps.event.addListener(marker, 'click', function(){
+                infoWnd.open(map, marker);
+            });
+            return marker;
+        }
+        
+        // ページ読み込み完了後、Googleマップを表示
+        google.maps.event.addDomListener(window, 'load', initMap);
+
+    
+
+    
+
+
+    </script>
+    <!-- Googlemap APIの取得 -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB87mkMD4fPhUltHTMmsdkUYzzyL0WoOtI&callback=initMap&libraries=places" async defer></script>
+    
+</body>

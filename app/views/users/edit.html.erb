@@ -1,0 +1,85 @@
+<div class="main_users">
+    <!-- サイドメニュー -->
+    <div class="maps_menu">
+        <h2 class="menu_title">メニュー</h2>
+        <li>
+            <%= link_to image_tag("/icon/mypage.png"), "/users/index" %>
+            <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+        </li>
+        <li>
+            <img src="/icon/mypage.png" class="logout_img">
+            <%= link_to("ログアウト", "/logout", {method: :post})%>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps" %>
+            <%= link_to( "ペットマップ", "/maps") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps/about" %>
+            <%= link_to( "ペットマップとは", "/maps/about") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/suggestion.png"), "/posts/index" %>
+            <%= link_to( "提案,意見する", "/posts/index") %>
+        </li>
+    </div>
+    <div class="main_users_edit">
+        <h1 class="users_title">アカウント編集</h1>
+        <p class="users_contents">アカウントの編集ができます<p>
+        <div class="users_edit_item">
+            <div class="container">
+                <div class="form_users_form">
+                    <div class="form_body">
+                        <% @user.errors.full_messages.each do |message| %>
+                            <div class="form_error">
+                                <%= message %>
+                            </div>
+                        <% end %>
+                    
+                        <%= form_tag("/users/#{@user.id}/update", {multipart: true}) do %>
+                        <p class="input_title">ユーザー名</p>
+                        <input name="name" value="<%= @user.name %>" class="textbox">
+                        <p class="input_title">画像</p>
+                        <input name="image" type="file" value="<%= @user.image_name %>" class="imagebox">
+                        <p class="input_title">メールアドレス</p>
+                        <input name="email" value="<%= @user.email %>" class="textbox">
+                        <p class="input_title">マイルート</p>
+                        <div class="myroute">
+                            <div class="myroute_item">
+                                <p class="input_title">ルート1</p>
+                                <select required>
+                                    <option value="" hidden>ルート1</option>
+                                    <% @route.each do |route| %>
+                                        <option value="<%= route.id %>"><%= route.route_name %></option>
+                                    <% end %>
+                                </select>
+                            </div>
+
+                            <div class="myroute_item">
+                                <p class="input_title">ルート2</p>
+                                <select required>
+                                    <option value="" hidden>ルート2</option>
+                                    <% @route.each do |route| %>
+                                        <option value="<%= route.id %>"><%= route.route_name %></option>
+                                    <% end %>
+                                </select>
+                            </div>
+
+                            <div class="myroute_item">
+                                <p class="input_title">ルート3</p>
+                                <select required>
+                                    <option value="" hidden>ルート3</option>
+                                    <% @route.each do |route| %>
+                                        <option value="<%= route.id %>"><%= route.route_name %></option>
+                                    <% end %>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="submit" value="保存" class="textbutton">
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

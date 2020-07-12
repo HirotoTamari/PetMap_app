@@ -1,0 +1,193 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+/* -------------------------------------- Web用のCSS ------------------------------------*/
+*{
+    margin: 0;
+    
+}
+
+.main_posts{
+    background-color: rgb(212, 212, 212);
+    display: flex;
+}
+
+@media screen and (min-width: 671px){
+    .maps_menu{
+        padding-top: 20px;
+        padding-left: 20px;
+        width: 30vw;
+        height: 100vh;
+        position: fixed;
+        background-color: white;
+        box-shadow: 0 2px 6px #888888;
+    }
+
+    .maps_menu li{
+        margin-top: 10px;
+        display: flex;
+    }
+
+    .maps_menu li:hover{
+        opacity: 0.4;
+    }
+
+    .maps_menu a{
+        padding-left: 10px;
+        line-height: 40px;
+    }
+
+    .menu_title{
+        margin-bottom: 25px;
+        height: 105px;
+        font-size: 20px;
+        opacity: 0.7;
+        border-bottom: solid 1px #888888;
+    }
+
+    /* 提案一覧 */
+
+    .main_posts_index{
+        width: 80vw;
+        margin-left: 20vw;
+        padding-left: 20px;
+    }
+
+
+    .posts_title{
+        padding-left: 30px;
+        font-size: 25px;
+        margin: 20px 20px 20px 10vw ;
+        opacity: 0.7;
+    }
+
+    .posts_contents{
+        margin: 20px 0 20px 10vw;
+        padding-left: 30px;
+        font-size: 15px;
+        opacity: 0.7;
+    }
+
+    .containers{
+        padding-left: 10vw;
+        padding-right: 10vw;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .posts_index_item {
+        width: 80vw;
+        height: 100px;
+        border-radius: 2px;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: 0 2px 6px #888888;
+    }
+
+    .posts_index_item a{
+        padding-left: 30px;
+        line-height: 3;
+    }
+
+    /* 投稿 */
+    .posts_new{
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+
+    .posts_new_title{
+        margin: 40px 0 20px 30px;
+        font-size: 20px;
+        opacity: 0.7;
+    }
+
+    .posts_new_content{
+        padding: 30px;
+        width: 50vw;
+        height: 200px;
+        border: none;
+        font-size: 15px;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px #888888;
+    }
+
+    .form_body{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .input_button{
+        margin: 20px 0 20px 0;
+        width: 80px;
+        height: 30px;
+        border: none;
+        font-size: 15px;
+        border-radius: 3px;
+        background-color: #888888;
+        color: white;
+        box-shadow: 0 2px 6px #414141;
+    }
+
+
+    /* 提案、意見の詳細 */
+    .main_posts-show{
+        width: 80vw;
+        height: 100vh;
+        margin-left: 20vw;
+        padding-left: 20px;
+    }
+
+    .post_container{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-left: 10vw;
+        padding-right: 10vw;
+    }
+
+    .posts_show_item{
+        width: 80vw;
+        background-color: white;
+        box-shadow: 0 2px 6px #888888;
+        padding: 20px 0 20px 30px;
+    }
+
+    .post_time{
+        font-size: 10px;
+        opacity: 0.6;
+    }
+
+    .post_menus{
+        opacity: 0.6;
+    }
+
+    /*  */
+    .main_posts_edit{
+        width: 80vw;
+        height: 100vh;
+        margin-left: 20vw;
+        padding-left: 20px;
+    }
+
+    .posts_edit_item{
+        width: 80vw;
+        padding-left: 30px;
+    }
+
+    .posts_edit_content{
+        padding: 30px;
+        width: 50vw;
+        height: 200px;
+        border: none;
+        font-size: 15px;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px #888888;
+    }
+}
+
+/* ---------------------------------------スマホ用のCSS------------------------------------------- */
+@media screen and (max-width: 671px){
+    
+}

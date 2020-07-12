@@ -1,0 +1,19 @@
+<div class="main_posts-show">
+        <div class="post_container">
+            <div class="posts_show_item">
+                <div class = posts-show-images>
+                    <img src = <%= "/route_images/#{@route.image_name}"%>>
+                </div>
+                <p>
+                    <%= @route.route_name %>         <!-- 提案内容 -->
+                </p>
+                <div class="post_time">
+                    <%= @route.created_at%>      <!-- 作成日時 -->
+                </div>
+                <div class="post_menus">
+                    <%= link_to("編集", "/routes/#{@route.id}/edit") %>                           <!-- 編集　-->
+                    <%= link_to("削除", "/routes/#{@route.id}/destroy", {method: "post"}) %>      <!-- 削除　-->
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,56 @@
+<div class="main_posts">
+    <!-- サイドメニュー -->
+    <div class="maps_menu">
+        <h2 class="menu_title">メニュー</h2>
+        <li>
+            <%= link_to image_tag("/icon/mypage.png"), "/users/index" %>
+            <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+        </li>
+        <li>
+            <img src="/icon/mypage.png" class="logout_img">
+            <%= link_to("ログアウト", "/logout", {method: :post})%>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps" %>
+            <%= link_to( "ペットマップ", "/maps") %>
+        </li>
+        <li>
+            <%= link_to image_tag("/icon/map.png"), "/maps/about" %>
+            <%= link_to( "ペットマップとは", "/maps/about") %>
+        </li>
+    </div>
+    <div class="main_posts_index">
+        <h1 class="posts_title">提案, 意見する</h1>
+        <p class="posts_contents">サービス向上のための提案, 意見などございましたらしていただけますと幸いです<p>
+        <div class="containers">
+            <% @posts.each do |post| %>
+            <div class="posts_index_item">
+                <div class = posts_index_contents>
+                <%= link_to(post.content, "/posts/#{post.id}") %>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    
+
+
+        <div class="posts_new">
+            <div class="new_container">
+                <%= form_tag("/posts/create", {multipart: true}) do %>
+                    <div class="form">
+                        <h2 class="posts_new_title">提案内容</h2>
+                        <div class="form_body">
+                        <% @post.errors.full_messages.each do |message| %>
+                        <div class="form-error">
+                            <%= message %>
+                        </div>
+                        <% end %>
+                        <textarea class="posts_new_content" name="content"><%= @post.content%></textarea>
+                        <input class="input_button" type="submit" value="送信">
+                    </div>
+                </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>

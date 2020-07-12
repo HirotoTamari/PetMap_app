@@ -1,0 +1,233 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+*{
+    margin: 0;
+}
+
+.main_users{
+    background-color: rgb(212, 212, 212);
+    display: flex;
+}
+
+/* -------------------------------------- Web用のCSS ------------------------------------*/
+@media screen and (min-width: 671px){
+
+    /* サイドバー */
+    .maps_menu{
+        padding-top: 20px;
+        padding-left: 20px;
+        width: 20vw;
+        height: 100vh;
+        position: fixed;
+        background-color: white;
+        box-shadow: 0 2px 6px #888888;
+    }
+
+    .maps_menu li{
+        margin-top: 10px;
+        display: flex;
+    }
+
+    .maps_menu li:hover{
+        opacity: 0.4;
+    }
+
+    .maps_menu a{
+        padding-left: 10px;
+        line-height: 40px;
+    }
+
+    .menu_title{
+        margin-bottom: 25px;
+        height: 105px;
+        font-size: 20px;
+        opacity: 0.7;
+        border-bottom: solid 1px #888888;
+    }
+
+    .users_title{
+        padding-left: 30px;
+        font-size: 25px;
+        margin: 20px 20px 20px 10vw ;
+        opacity: 0.7;
+    }
+
+    .user_name{
+        font-size: 13px;
+        color: #888888;
+        margin: 20px 0 10px 0;
+    }
+
+    .users_contents{
+        margin: 20px 0 20px 10vw;
+        padding-left: 30px;
+        font-size: 15px;
+        opacity: 0.7;
+    }
+
+    /* input -------------------------*/
+    
+    .textbox{
+        border: none;
+        border-radius: 3px;
+        background-color: #e2e2e2;
+        height: 30px;
+        width: 200px;
+        margin: 15px 0 30px 0;
+    }
+
+    .textbutton{
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background-color: #888888;
+        width: 80px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .imagebox{
+        margin: 15px 0 30px 0;
+        border: none;
+        outline: none;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .input_title{
+        font-size: 13px;
+        color: #888888;
+    }
+
+    /* マイルート */
+    .myroute{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .myroute select{
+        margin-top: 10px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        border: none;
+        border-radius: 3px;
+        width: 150px;
+        height: 30px;
+        background-color: #e2e2e2;
+    }
+
+    .myroute_item{
+        margin: 15px 30px 30px 0;
+        line-height: 30px;
+    }
+
+    /* マイページ --------------------- */
+    .main_user_index{
+        width: 80vw;
+        height: 100vh;
+        margin-left: 20vw;
+        padding-left: 20px;
+    }
+
+    .users_index_item {
+        padding: 0 10vw 0 10vw;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .container{
+        width: 80vw;
+        border-radius: 2px;
+        padding: 20px 0 20px 30px;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: 0 2px 6px #888888;
+    }
+
+    .my_user_image{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .routes{
+        font-size: 15px;
+    }
+
+    .edit{
+        margin-top: 20px;
+    }
+
+
+    /* サインアップ -------------------- */
+    .main_users_new{
+        width: 80vw;
+        height: 100vh;
+        margin-left: 20vw;
+        padding-left: 20px;
+    }
+
+    .users_new_item {
+        padding: 0 10vw 0 10vw;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    /* 編集 */
+    .main_users_edit{
+        width: 80vw;
+        height: 100vh;
+        margin-left: 20vw;
+        padding-left: 20px;
+    }
+
+    .users_edit_item {
+        padding: 0 10vw 0 10vw;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    /* ログイン */
+    .main_user_index{
+        width: 80vw;
+        margin-left: 20vw;
+        padding-left: 20px;
+    }
+
+    .users_login_item{
+        padding: 0 10vw 0 10vw;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    
+    form{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .signup_form{
+        margin-top: 20px;
+        display: flex;
+    }
+
+    .signup_form a{
+        font-size: 13px;
+    }
+
+    .signup_form a:hover{
+        opacity: 0.5;
+    }
+
+
+
+}
+
+/* ---------------------------------------スマホ用のCSS------------------------------------------- */
+@media screen and (max-width: 671px){
+    
+}

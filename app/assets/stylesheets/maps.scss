@@ -1,0 +1,351 @@
+// Place all the styles related to the maps controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+*{
+    margin: 0;
+}
+
+#map{
+    //position: absolute;
+    height: 100vh;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+    list-style: none;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+li{
+    list-style: none;
+}
+
+/* -------------------------------------- Web用のCSS ------------------------------------*/
+
+@media screen and (min-width: 671px){
+
+    /* 検索バー */
+    .serch_box{
+        position: absolute;
+
+        min-width: 300px;
+        min-height: 50px;
+
+        background-color: white;
+        box-shadow: 0 2px 6px #c1ced7;
+        border-radius: 6px;
+
+        margin: 10px;
+
+        z-index: 2;
+    }
+    
+    /* ハンバーガーメニュー */
+    .open、
+    .close{
+        display: block;
+    }
+
+    .open{
+        position: absolute;
+    }
+
+    input[type="checkbox"]{
+        position: absolute;
+        left: -50vw;
+        
+    }
+
+    aside{
+        position: absolute;
+        min-width: 300px;
+        top: -320px;
+        transition: all 0.2s;
+        background-color: white;
+        box-shadow: 0 2px 6px #c1ced7;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .hamburger_menu{
+        background-color: rgb(238, 238, 238);
+    }
+
+    .hamburger_menu li{
+        display: flex;
+    }
+
+    .hamburger_menu a{
+        padding-left: 10px;
+        line-height: 40px;
+    }
+
+    aside li{
+        padding-top: 10px;
+        list-style: none;
+    }
+
+    aside li:hover{
+        opacity: 0.4;
+    }
+
+    input[type="checkbox"]:checked ~ aside{
+        top: 0;
+    }
+
+    .hamburger_icon{
+        width: 22px;
+
+        margin-left: 17px;
+        margin-top: 14px;
+
+        opacity: 0.6;
+
+        border: none;
+        outline: none;
+    }
+
+    #address_form{
+        position: relative;
+    }
+
+
+    #address{
+        position: relative;
+        margin-left: 40px;
+        padding-left: 10px;
+        font-size: 15px;
+        line-height: 48px;
+        background-color: rgba(0, 0, 0, 0);
+        width: 202px;
+        border: none;
+        outline: none;
+    }
+
+    #address_button{
+        height: 18px;
+
+        margin-bottom: -3px;
+        opacity: 0.7;
+
+        border: none;
+        outline: none;
+    }
+
+    .gnavi{
+        position: absolute;
+        height: 30px;
+        border: none;
+        outline: none;
+        z-index: 2;
+        bottom: 0;
+        left: 76px;
+    }
+
+    .gnavi_img{
+        width: auto;
+        height: 30px;
+        border: none;
+        outline: none;
+    }
+
+    .search{
+        position: absolute;
+        z-index: 1;
+        padding-top: 70px;
+        display: flex;
+    }
+
+    .search_menu{
+        display: flex;
+        flex-direction: column;
+        margin-left: 18px;
+    }
+
+    .search_menu_text{
+        text-align: center;
+        line-height: 0px;
+        font-size: 5px;
+    }
+
+    li img{
+        height: 40px;
+        border: none;
+        outline: none;
+    }
+
+    #restaurant_button{
+        height: 40px;
+        border: none;
+        outline: none;
+    }
+
+    /* ペットマップとは */
+
+    .about_aside{
+        position: absolute;
+        min-width: 300px;
+        top: -390px;
+        margin-top: 26px;
+        margin-left: 10px;
+        padding-top: 5px;
+        transition: all 0.2s;
+        background-color: white;
+        box-shadow: 0 2px 6px #c1ced7;
+        border-radius: 6px;
+        overflow: hidden;
+    }
+
+    .about_hamburger_icon{
+        width: 22px;
+        margin-left: 27px;
+        opacity: 0.6;
+        border: none;
+        outline: none;
+    }
+
+    .about_hamburger_icon_close{
+        width: 22px;
+        margin-left: 17px;
+        opacity: 0.6;
+        border: none;
+        outline: none;
+    }
+
+    .about_hamburger_icon:hover{
+        opacity: 0.4;
+    }
+
+    .about_title{
+        margin: 30px 50px;
+        opacity: 0.7;
+        text-align: center;
+    }
+
+    .about_menu{
+        margin: 0;
+    }
+
+    .about_menu img{
+        width: 100%;
+    }
+
+    .about_contents{
+        height: 500px;
+        margin-top: -6px;
+        background-color: #4C4C4C;
+    }
+}
+
+
+/* ---------------------------------------スマホ用のCSS------------------------------------------- */
+@media screen and (max-width: 671px){
+    .serch_box{
+        position: absolute;
+
+        width: 96vw;
+        min-height: 50px;
+
+        background-color: white;
+        box-shadow: 0 2px 6px #c1ced7;
+        border-radius: 6px;
+
+        margin-top: 2vw;
+        margin-left: 2vw;
+        margin-right: 2vw;
+
+        z-index: 1;
+    }
+
+    /* ハンバーガーメニュー */
+    .open、
+    .close{
+        display: block;
+    }
+
+    .open{
+        position: absolute;
+    }
+
+    input[type="checkbox"]{
+        position: absolute;
+        left: -50vw;
+        
+    }
+
+    aside{
+        position: absolute;
+        width: 100vw;
+        top: -250px;
+        transition: all 0.2s;
+        background-color: white;
+        box-shadow: 0 2px 6px #c1ced7;
+        border-radius: 6px;
+    }
+
+    input[type="checkbox"]:checked ~ aside{
+        top: 0;
+    }
+
+    .hamburger_icon{
+        width: 22px;
+
+        margin-left: 17px;
+        margin-top: 14px;
+
+        opacity: 0.6;
+
+        border: none;
+        outline: none;
+    }
+
+    #address_form{
+        position: relative;
+    }
+
+
+    #address{
+        position: relative;
+        margin-left: 40px;
+        padding-left: 10px;
+
+        font-size: 15px;
+        line-height: 48px;
+
+        background-color: rgba(0,0,0,0);
+
+        width: 267px;
+
+
+        border: none;
+        outline: none;
+    }
+
+    #address_button{
+        height: 18px;
+
+        margin-bottom: -3px;
+        opacity: 0.7;
+
+        border: none;
+        outline: none;
+    }
+
+    .gnavi{
+        position: absolute;
+        height: 30px;
+        border: none;
+        outline: none;
+        z-index: 2;
+        bottom: 0;
+        left: 76px;
+    }
+
+    .gnavi_img{
+        width: auto;
+        height: 30px;
+        border: none;
+        outline: none;
+    }
+}
