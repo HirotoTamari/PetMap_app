@@ -6,6 +6,7 @@
             <div class="routes_index_item">
                 <img src = <%= "/route_images/#{route.image_name}"%>>
                 <%= link_to(route.route_name, "/routes/#{route.id}") %>
+                <%= route.function_name %>
             </div>
             <% end %>
         </div>
@@ -26,6 +27,7 @@
                         <p>画像</p>
                         <input class = "posts-new-image" name="image" type="file">
                         <textarea class="routes_new_route_name" name="route_name"><%= @route.route_name%></textarea>
+                        <textarea class="routes_new_route_name" name="function_name"><%= @route.function_name%></textarea>
                         <input class="input_button" type="submit" value="送信">
                     </div>
                 </div>

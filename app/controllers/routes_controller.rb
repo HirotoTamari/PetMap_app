@@ -9,7 +9,7 @@ class RoutesController < ApplicationController
     end
 
     def create
-        @route = Route.new(route_name: params[:route_name], image_name: params[:image])
+        @route = Route.new(route_name: params[:route_name], image_name: params[:image], function_name: params[:function_name])
 
         if @route.save
             if params[:image]
@@ -38,6 +38,7 @@ class RoutesController < ApplicationController
     def update
         @route = Route.find_by(id: params[:id])
         @route.route_name = params[:route_name]
+        @route.function_name = params[:function_name]
 
         if @route.save
             if params[:image]

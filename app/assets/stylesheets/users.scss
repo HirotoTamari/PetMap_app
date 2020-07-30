@@ -12,9 +12,14 @@
 
 /* -------------------------------------- Web用のCSS ------------------------------------*/
 @media screen and (min-width: 671px){
+    /* ハンバーガーメニュー */
+    .hamburger{
+        display: none !important;
+    }
 
     /* サイドバー */
     .maps_menu{
+        display: block !important;
         padding-top: 20px;
         padding-left: 20px;
         width: 20vw;
@@ -60,6 +65,7 @@
     }
 
     .users_contents{
+        display: block !important;
         margin: 20px 0 20px 10vw;
         padding-left: 30px;
         font-size: 15px;
@@ -78,6 +84,16 @@
     }
 
     .textbutton{
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background-color: #888888;
+        width: 80px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .textbutton_route input{
         border: none;
         border-radius: 3px;
         color: white;
@@ -152,6 +168,15 @@
         flex-direction: column;
     }
 
+    .my_user_image_opp{
+        margin: 3vh 0;
+        width: 7vh;
+        height: 7vh;
+        border-radius: 100%;
+        object-fit: cover;
+        border: solid 0.5px #888888;
+    }
+
     .routes{
         font-size: 15px;
     }
@@ -223,11 +248,240 @@
         opacity: 0.5;
     }
 
+    .routes{
+        display: flex;
+    }
+
+    .routes_menu{
+        margin: 10px 0;
+        width: 10vh;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 12px;
+        color: #888888;
+    }
+
+    .routes_menu_image{
+        margin-left: 2vh;
+        border: none;
+        width: 6vh;
+        height: 6vh;
+    }
 
 
 }
 
 /* ---------------------------------------スマホ用のCSS------------------------------------------- */
 @media screen and (max-width: 671px){
-    
+    .users_top{
+        background-color: #888888;
+    }
+
+    /* ハンバーガーメニュー */
+
+    .hamburger{
+        display: block !important;
+        z-index: 2;
+    }
+    .maps_menu{
+        display: none !important;
+    }
+
+    .hamburger_nav{
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    aside{
+        position: absolute;
+        width: 100%;
+        top: -101vh;
+        transition: all 0.2s;
+        background-color: rgb(238, 238, 238);
+        box-shadow: 0 2px 6px #c1ced7;
+        overflow: hidden;
+    }
+
+    .hamburger_menu{
+        margin-top: 10px;
+        background-color: rgb(238, 238, 238);
+    }
+
+    .hamburger_menu li{
+        display: flex;
+    }
+
+    .hamburger_menu a{
+        padding-left: 20px;
+        line-height: 45px;
+    }
+
+    aside li{
+        padding-top: 10px;
+        list-style: none;
+    }
+
+    aside li:hover{
+        opacity: 0.4;
+    }
+
+    .hamburger_icon{
+        opacity: 1.0;
+    }
+
+
+    /* マイページ */
+    .main_user_index{
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .users_title{
+        text-align: center;
+        padding: 15px 0;
+        color: white;
+        opacity: 1.0;
+        font-size: 15px;
+        margin-bottom: 50px;
+    }
+
+    .users_contents{
+        display: none !important;
+    }
+
+    .user_name{
+        margin: 20px 0 10px 0;
+        font-size: 13px;
+        opacity: 0.6;
+    }
+
+    .container{
+        margin: 50px;
+    }
+
+    .menu_title{
+        margin: 20px 0 10px 20px;
+        font-size: 20px;
+    }
+
+    .my_user_image_opp{
+        margin-top: 30px;
+        width: 7vh;
+        height: 7vh;
+        border-radius: 100%;
+        object-fit: cover;
+        border: solid 0.5px #888888;
+    }
+
+    .edit{
+        margin-top: 20px;
+        text-align: center;
+        border: none;
+        border-radius: 3px;
+        background-color: #888888;
+        width: 80px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .edit a{
+        color: white;
+        line-height: 30px;
+    }
+
+    .routes{
+        display: flex;
+    }
+
+    .routes_menu{
+        margin: 10px 0;
+        width: 10vh;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        font-size: 12px;
+        color: #888888;
+    }
+
+    .routes_menu_image{
+        margin-left: 2vh;
+        border: none;
+        width: 6vh;
+        height: 6vh;
+    }
+
+
+    /* 編集 */
+    .main_users_edit{
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .input_title{
+        margin: 20px 0 10px 0;
+        font-size: 11px;
+        opacity: 0.6;
+    }
+
+    .textbox{
+        border: none;
+        border-radius: 3px;
+        background-color: #e2e2e2;
+        height: 30px;
+        width: 200px;
+    }
+
+    .textbutton{
+        margin-top: 20px;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background-color: #888888;
+        width: 80px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    .textbutton_route input{
+        margin-top: 20px;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background-color: #888888;
+        width: 80px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+
+    /* アカウント作成、ログイン */
+    .main_users_new{
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .signup_form{
+        display: flex;
+    }
+
+    .signup_form a{
+        margin: 20px 0 10px 0;
+        font-size: 13px;
+    }
+
+    select{
+        border: none;
+        border-radius: 3px;
+        background-color: #e2e2e2;
+        height: 30px;
+        width: 200px;
+    }
 }

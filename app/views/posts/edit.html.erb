@@ -1,9 +1,53 @@
 <div class="main_posts">
-    <!-- サイドメニュー -->
+    <%# ハンバーガーメニュー %>
+    <div class="hamburger">
+        <input id="hamburger_menu" type="checkbox" />
+        <label for="hamburger_menu" class="open"><img class="hamburger_icon" src="/icon/hamburger_icon2.png"></label>
+
+        <%# ハンバーガーメニューの中身 %>
+        <aside>
+            <div class="hamburger_nav">
+                <label for="hamburger_menu" class="close"><img class="hamburger_icon" src="/icon/hamburger_close_icon.png"></label>
+
+                <nav class="hamburger_menu">
+                    <h2 class="menu_title">メニュー</h2>
+                    <% if @current_user %>
+                        <li>
+                            <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+                        </li>
+                        <li>
+                            <%= link_to( "ペットマップ", "/maps") %>
+                        </li>
+                        <li>
+                            <%= link_to( "ペットマップとは", "/maps/about") %>
+                        </li>
+                        <li>
+                            <%= link_to( "提案,意見する", "/posts/index") %>
+                        </li>
+                        <li>
+                            <%= link_to("ログアウト", "/logout", {method: :post})%>
+                        </li>
+                    <% else %>
+                        <li>
+                            <%= link_to( "ログイン", "/login") %>
+                        </li>
+                        <li>
+                            <%= link_to( "ペットマップ", "/maps") %>
+                        </li>
+                        <li>
+                            <%= link_to( "ペットマップとは", "/maps/about") %>
+                        </li>
+                    <% end %>
+                </nav>
+            </div>
+        </aside>
+    </div>
+
+    <%# サイドメニュー %>
     <div class="maps_menu">
         <h2 class="menu_title">メニュー</h2>
         <li>
-            <%= link_to image_tag("/icon/mypage.png"), "/users/index" %>
+            <%= link_to image_tag("/icon/mypage.png"), "/users/#{@current_user.id}" %>
             <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
         </li>
         <li>
@@ -24,8 +68,10 @@
         </li>
     </div>
     <div class="main_posts_edit">
-        <h1 class="posts_title">編集する</h1>
-        <p class="posts_contents">あなたの提案, 意見を編集できます<p>
+        <div class="post_top">
+            <h1 class="posts_title">編集する</h1>
+            <p class="posts_contents">あなたの提案, 意見を編集できます<p>
+        </div>
         <div class="post_container">
             <div class="posts_edit_item">
                 <%= form_tag("/posts/#{@post.id}/update") do %>
@@ -36,6 +82,7 @@
                                 <%= message %>
                                 </div>
                             <% end %>
+                            <%# 内容の入力 %>
                             <textarea class="posts_edit_content" name="content"><%= @post.content%></textarea>
                             
                             <input class ="input_button" type="submit" value="保存">

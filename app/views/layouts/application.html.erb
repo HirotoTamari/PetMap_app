@@ -4,12 +4,78 @@
     <title>PetmapApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%# スマホ画面時のタブバー %>
+    <div class="bottom_nav">
+      <div class="bottom_nav_opp">
+        <nav class="nav_menu">
+          <%# ユーザの認識 %>
+          <% if @current_user %>
+            <div class="menu_item">
+              <%# ページの認識 %>
+              <% if current_page?("/users/#{@current_user.id}") or current_page?("/users/#{@current_user.id}/edit")%>
+                <li>
+                  <%= link_to image_tag("/icon/mypage_bottom_on.png"), "/users/#{@current_user.id}" %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to image_tag("/icon/mypage_bottom.png"), "/users/#{@current_user.id}" %>
+                </li>
+              <% end%>
+                <li>
+                  <%= link_to( "マイページ", "/users/#{@current_user.id}") %>
+                </li>
+            </div>
+            <div class="menu_item">
+              <%# ページの認識 %>
+              <% if current_page?(controller: "maps", action:"map") or current_page?(controller: "maps", action:"index") or current_page?(controller: "maps", action:"about") %>
+                <li>
+                  <%= link_to image_tag("/icon/map_bottom_on.png"), "/maps" %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to image_tag("/icon/map_bottom.png"), "/maps" %>
+                </li>
+              <% end %>
+                <li>
+                  <%= link_to( "ペットマップ", "/maps") %>
+                </li>
+            </div>
+            <div class="menu_item">
+              <%# ページの認識 %>
+              <% if current_page?(controller: "maps", action:"index") or current_page?(controller: "maps", action:"map") or current_page?(controller: "maps", action:"about") or current_page?(controller: "routes", action:"index")%>
+                <li>
+                  <%= link_to image_tag("/icon/suggestion_bottom.png"), "/posts/index" %>
+                </li>
+              <% else %>
+                <%# ページの認識 %>
+                <% if current_page?(controller: "posts", action:"index") or current_page?(controller: "posts", action:"show") or current_page?(controller: "posts", action:"edit")%>
+                  <li>
+                    <%= link_to image_tag("/icon/suggestion_bottom_on.png"), "/posts/index" %>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to image_tag("/icon/suggestion_bottom.png"), "/posts/index" %>
+                  </li>
+                <% end %>
+              <% end %>
+                <li>
+                  <%= link_to( "ペットマップ", "/maps/index") %>
+                </li>
+            </div>
+          <% else %>
+            <%# ログイン前のタブバー %>
+            <div class="menu_item_off">
+            </div>
+          <%end%>
+        </nav>
+      </div>
+    </div>
     <%= yield %>
   </body>
 </html>

@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
-/* -------------------------------------- Web用のCSS ------------------------------------*/
 *{
     margin: 0;
     
@@ -13,6 +12,8 @@
     display: flex;
 }
 
+
+/* -------------------------------------- Web用のCSS ------------------------------------*/
 @media screen and (min-width: 671px){
     .maps_menu{
         padding-top: 20px;
@@ -63,6 +64,7 @@
     }
 
     .posts_contents{
+        display: block !important;
         margin: 20px 0 20px 10vw;
         padding-left: 30px;
         font-size: 15px;
@@ -78,7 +80,7 @@
     }
 
     .posts_index_item {
-        width: 80vw;
+        width: 100%;
         height: 100px;
         border-radius: 2px;
         background-color: white;
@@ -132,7 +134,7 @@
 
 
     /* 提案、意見の詳細 */
-    .main_posts-show{
+    .main_posts_show{
         width: 80vw;
         height: 100vh;
         margin-left: 20vw;
@@ -163,7 +165,7 @@
         opacity: 0.6;
     }
 
-    /*  */
+    /* 提案、意見の編集 */
     .main_posts_edit{
         width: 80vw;
         height: 100vh;
@@ -189,5 +191,197 @@
 
 /* ---------------------------------------スマホ用のCSS------------------------------------------- */
 @media screen and (max-width: 671px){
-    
+    a:hover{
+        opacity: 0.4;
+    }
+
+    .main_posts{
+        z-index: 3;
+    }
+
+    .post_top{
+        background-color: #888888;
+        width: 100vw;
+    }
+
+    /* ハンバーガーメニュー */
+
+    .hamburger{
+        display: block !important;
+        z-index: 2;
+    }
+    .maps_menu{
+        display: none !important;
+    }
+
+    .hamburger_nav{
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    aside{
+        position: absolute;
+        width: 100%;
+        top: -101vh;
+        transition: all 0.2s;
+        background-color: rgb(238, 238, 238);
+        box-shadow: 0 2px 6px #c1ced7;
+        overflow: hidden;
+    }
+
+    .hamburger_menu{
+        margin-top: 10px;
+        background-color: rgb(238, 238, 238);
+    }
+
+    .hamburger_menu li{
+        display: flex;
+    }
+
+    .hamburger_menu a{
+        padding-left: 20px;
+        line-height: 45px;
+    }
+
+    aside li{
+        padding-top: 10px;
+        list-style: none;
+    }
+
+    aside li:hover{
+        opacity: 0.4;
+    }
+
+    .hamburger_icon{
+        opacity: 1.0;
+    }
+
+    .menu_title{
+        margin: 20px 0 10px 20px;
+        font-size: 20px;
+    }
+
+
+    .posts_title{
+        text-align: center;
+        padding: 15px 0;
+        color: white;
+        opacity: 1.0;
+        font-size: 15px;
+        margin-bottom: 50px;
+    }
+
+    .posts_contents{
+        display: none !important;
+    }
+
+    .containers{
+        margin: 50px 0;
+    }
+
+    .input_button{
+        margin-bottom: 20vw;
+        border: none;
+        border-radius: 3px;
+        color: white;
+        background-color: #888888;
+        width: 80px;
+        height: 30px;
+        font-size: 15px;
+    }
+
+    /* 提案一覧 */
+    .main_posts_index{
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .new_container{
+        margin: 20px;
+    }
+
+    .posts_index_item{
+        margin: 0 20px;
+        padding: 20px 30px;
+        background-color: rgb(238, 238, 238);
+        box-shadow: 0 2px 6px #c1ced7;
+        overflow: hidden;
+        font-size: 12px;
+    }
+
+    .posts_new_title{
+        font-size: 15px;
+        margin-bottom: 10px;
+    }
+
+    .posts_new_content{
+        margin-bottom: 10px;
+        padding: 20px 0 20px 20px;
+        width: 100%;
+        height: 100px;
+        border: none;
+        border-radius: 2px;
+        background-color: rgb(238, 238, 238);
+    }
+
+
+    /* 提案の詳細 */
+    .main_posts_show{
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .posts_show_item{
+        margin: 20px;
+        padding: 40px 30px;
+        background-color: rgb(238, 238, 238);
+    }
+
+    .posts_show_item p{
+        font-size: 20px;
+        margin: 10px 0;
+    }
+
+    .posts_show_item a:hover{
+        opacity: 0.6;
+    }
+
+    .post_time{
+        font-size: 10px;
+        margin: 6px 0;
+        opacity: 0.6;
+    }
+
+
+    /* 提案の編集 */
+    .main_posts_edit{
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        z-index: 1;
+    }
+
+    .posts_edit_item{
+        margin: 0 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .posts_edit_content{
+        border: none;
+        width: 100%;
+        margin: 20px 20px 20px 0;
+        padding: 40px 0 40px 30px;
+        font-size: 20px;
+        background-color: rgb(238, 238, 238);
+    }
+
+    .form_body{
+        overflow: hidden;
+    }
 }
